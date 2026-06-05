@@ -1,5 +1,5 @@
-#include "kernel.h"
-#include "network.h"
+#include "../../../include/kernel.h"
+#include "../../../include/network.h"
 
 
 // ============================================≠=========
