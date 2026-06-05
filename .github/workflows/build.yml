@@ -23,17 +23,22 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y clang gcc-multilib
 
-    - name: Compile
+    - - name: Compile
       run: |
         BUILD_DIR="/tmp/build_${{ matrix.arch }}"
         mkdir -p "$BUILD_DIR"
         
+        #
+        PROJECT_ROOT=$GITHUB_WORKSPACE
+        
         find . -type f -name "*.c" | while read -r file; do
           filename=$(basename "$file" .c)
+          
+          
           clang -c "$file" -o "$BUILD_DIR/$filename.o" \
             --target=${{ matrix.target }} \
             ${{ matrix.flags }} \
-            -I. \
+            -I"$PROJECT_ROOT" \
             -ffreestanding -Wall -Wextra
         done
 
