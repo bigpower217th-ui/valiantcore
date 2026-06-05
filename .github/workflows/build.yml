@@ -33,6 +33,7 @@ jobs:
           clang -c "$file" -o "$BUILD_DIR/$filename.o" \
             --target=${{ matrix.target }} \
             ${{ matrix.flags }} \
+            -I. \
             -ffreestanding -Wall -Wextra
         done
 
