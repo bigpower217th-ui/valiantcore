@@ -1,0 +1,44 @@
+name: C Build Matrix
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - arch: x86_64
+            target: x86_64-linux-gnu
+            flags: ""
+          - arch: i686
+            target: i686-linux-gnu
+            flags: "-m32"
+    
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install Clang and Multi-arch support
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y clang gcc-multilib
+        
+    - name: Compile C files to /tmp
+      run: |
+        # Kök dizin yerine /tmp kullanıyoruz
+        BUILD_DIR="/tmp/build_${{ matrix.arch }}"
+        mkdir -p "$BUILD_DIR"
+        
+        for file in *.c; do
+          # [[ -f "$file" ]] kontrolü ile sadece dosyaları alıyoruz
+          clang -c "$file" -o "$BUILD_DIR/${file%.c}.o" \
+            --target=${{ matrix.target }} \
+            ${{ matrix.flags }} \
+            -ffreestanding -Wall -Wextra
+        done
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: objects-${{ matrix.arch }}
+        path: /tmp/build_${{ matrix.arch }}/*.o
