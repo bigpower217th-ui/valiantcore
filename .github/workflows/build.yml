@@ -18,20 +18,19 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Install Clang and Multi-arch support
+    - name: Install Dependencies
       run: |
         sudo apt-get update
         sudo apt-get install -y clang gcc-multilib
-        
-    - name: Compile C files to /tmp
+
+    - name: Compile
       run: |
-        
         BUILD_DIR="/tmp/build_${{ matrix.arch }}"
         mkdir -p "$BUILD_DIR"
         
-        for file in *.c; do
-          
-          clang -c "$file" -o "$BUILD_DIR/${file%.c}.o" \
+        find . -type f -name "*.c" | while read -r file; do
+          filename=$(basename "$file" .c)
+          clang -c "$file" -o "$BUILD_DIR/$filename.o" \
             --target=${{ matrix.target }} \
             ${{ matrix.flags }} \
             -ffreestanding -Wall -Wextra
