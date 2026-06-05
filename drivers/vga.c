@@ -1,5 +1,5 @@
-#include <vga.h>
-#include <kernel.h>
+#include "../include/vga.h"
+#include "../include/kernel.h"
 
 static unsigned short *vga_buf = (unsigned short *)VGA_BASE;
 static int cursor_x = 0;
