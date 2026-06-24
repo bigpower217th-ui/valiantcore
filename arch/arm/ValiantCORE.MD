@@ -1,3 +1,3 @@
-# ValiantCore arm32
+# ValiantCore Aarch64
 
-arm32 support coming soon
+Aarch64 support coming soon
