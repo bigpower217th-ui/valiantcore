@@ -22,6 +22,10 @@ make clean
 
 # List all commands
 make help
+
+# for aarch64 compilation
+chmod 755 build.sh
+./build.sh
 ``` 
 <br>
 <a href="https://www.buymeacoffee.com/bigpower21k" target="_blank">
