@@ -8,7 +8,7 @@ I plan to write a lightweight, user-friendly, fast, and secure operating system 
 
 ```bash
 
-fedora: sudo dnf install git -y
+fedora Distros: sudo dnf install git -y
 Debian Distros: sudo apt install git -y
 arch Distros: sudo pacman -S git -y
 
