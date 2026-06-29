@@ -8,12 +8,18 @@ I plan to write a lightweight, user-friendly, fast, and secure operating system 
 
 ```bash
 
-# fedora Distros: sudo dnf install git -y
-# Debian Distros: sudo apt install git -y
-# arch Distros: sudo pacman -S git -y
-# Android Termux: pkg install git -y
-# Alpine Distro : apk add git -y
-# OpenSUSE Distro : sudo zypper install git -y
+# fedora Distros:
+sudo dnf install git -y
+# Debian Distros
+sudo apt install git build-essential -y
+# OpenSUSE Distro
+sudo zypper install git build-essential -y
+# Alpine Distros
+apk add git build-base -y
+# Arch Distros
+sudo pacman -S git build-essential -y
+# Android Termux
+pkg install git build-essential -y
 
 # Clone repository
 git clone https://github.com/finndev62/valiantcore.git
