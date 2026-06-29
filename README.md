@@ -9,15 +9,15 @@ I plan to write a lightweight, user-friendly, fast, and secure operating system 
 ```bash
 
 # fedora Distros:
-sudo dnf install git -y
+sudo dnf groupinstall "Development Tools" -y && sudo dnf install git -y
 # Debian Distros
 sudo apt install git build-essential -y
 # OpenSUSE Distro
-sudo zypper install git build-essential -y
+sudo zypper install -y git -t pattern devel_basis
 # Alpine Distros
-apk add git build-base -y
+apk add git build-base
 # Arch Distros
-sudo pacman -S git build-essential -y
+sudo pacman -S git base-devel --noconfirm
 # Android Termux
 pkg install git build-essential -y
 
