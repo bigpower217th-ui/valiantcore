@@ -4,7 +4,7 @@
 
 
 /* ----------VGA CONSTANTS--------------------------------- */
-#define VGA_BASE      0xB80000
+#define VGA_BASE      0xB8000
 #define VGA_COLS      80
 #define VGA_ROWS      25
 #define VGA_REG_CTRL  0x3D4
